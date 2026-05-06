@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heat Index Checker</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; padding-top: 50px; background-color: rgb(150, 42, 42); }
+        .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 300px; text-align: center; }
+        input { width: 90%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 6px;}
+        button { width: 100%; padding: 10px; background-color: #c54a25; color: white; border: none; border-radius: 6px; font-size: 16px; }
+        button:hover { background-color: #e64a19; }
+        #result { margin-top: 20px; font-weight: bold; font-size: 1.2rem; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Heat Index Checker</h1>
+    <label>Temperature (Celsius):</label>
+    <input type="number" id="temp" placeholder="Temperature in Celsius">
+    
+    <label>Humidity (%):</label>
+    <input type="number" id="humidity" placeholder="Humidity in percent (%)">
+    
+    <button onclick="calculateHeatIndex()">Calculate</button>
+    
+    <div id="result"></div>
+</div>
+
+<script>
+    function calculateHeatIndex() {
+        const temp = parseFloat(document.getElementById('temp').value);
+        const humidity = parseFloat(document.getElementById('humidity').value);
+        const resultDiv = document.getElementById('result');
+
+        const heatIndex = temp + (0.33 * humidity) - 4;
+
+        if (heatIndex >= 42) {
+            window.alert("Heat Index: " + heatIndex.toFixed(1) + "°C - Extreme Heat / Danger")
+        } else if (heatIndex >= 38) {
+            window.alert("Heat Index: " + heatIndex.toFixed(1) + "°C - Very Hot / Caution")
+        } else if (heatIndex >= 33) {
+            window.alert("Heat Index: " + heatIndex.toFixed(1) + "°C - Hot")
+        } else if (heatIndex >= 28) {
+            window.alert("Heat Index: " + heatIndex.toFixed(1) + "°C - Warm")
+        } else {
+            window.alert("Heat Index: " + heatIndex.toFixed(1) + "°C - Comfortable / Cool")
+        }
+
+
+    }
+</script>
+
+    
+
+</body>
+</html>
